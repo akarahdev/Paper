@@ -33,13 +33,8 @@ if (!file(".git").exists()) {
 
 rootProject.name = "paper"
 
-for (name in listOf("paper-api", "paper-server")) {
-    include(name)
-    file(name).mkdirs()
-}
-
-optionalInclude("test-plugin")
-optionalInclude("paper-generator")
+include("paper-server")
+file("paper-server").mkdirs()
 
 fun optionalInclude(name: String, op: (ProjectDescriptor.() -> Unit)? = null) {
     val settingsFile = file("$name.settings.gradle.kts")
